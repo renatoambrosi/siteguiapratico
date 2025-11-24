@@ -1,0 +1,2771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Prático para Reprogramar a Mente | Suellen Seragi</title>
+    <meta name="description" content="A forma mais simples, leve e organizada de começar — ou aprofundar — sua reprogramação mental. Método prático baseado no Grande Livro, PNL e neurociência.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4A574;
+            --orange: #E67E22;
+            --dark: #1a1a1a;
+            --dark-soft: #2a2a2a;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--orange));
+            z-index: 10000;
+            transition: width 0.3s ease;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .header.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-logo {
+            height: 55px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .header.scrolled .header-logo {
+            height: 47px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-menu a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-menu a.btn-header {
+            color: var(--white);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+        
+        .btn-header {
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 165, 116, 0.4);
+            color: var(--white);
+        }
+        
+        .btn-header:focus,
+        .btn-header:active {
+            color: var(--white);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--dark);
+            transition: right 0.3s ease;
+            padding: 5rem 2rem 2rem;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .mobile-menu li {
+            margin-bottom: 1.5rem;
+        }
+        
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+        
+        .mobile-menu a:hover {
+            color: var(--gold);
+        }
+
+        .nav-menu a.btn-header:hover,
+        .nav-menu a.btn-header:focus,
+        .nav-menu a.btn-header:active,
+        .mobile-menu a.btn-header:hover,
+        .mobile-menu a.btn-header:focus,
+        .mobile-menu a.btn-header:active {
+            color: var(--white);
+        }
+        
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+        }
+        
+        .mobile-overlay.active {
+            display: block;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Section */
+        section {
+            padding: 5rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fff5ec 0%, #fffdf8 55%, #f3f7ff 100%);
+            padding: 10rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -45%;
+            right: -15%;
+            width: 720px;
+            height: 720px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.25) 0%, rgba(212, 165, 116, 0.05) 60%, transparent 85%);
+            border-radius: 50%;
+            filter: blur(0px);
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -35%;
+            left: -20%;
+            width: 520px;
+            height: 520px;
+            background: radial-gradient(circle, rgba(255, 188, 122, 0.22) 0%, rgba(255, 188, 122, 0.08) 55%, transparent 80%);
+            border-radius: 50%;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text {
+            text-align: left;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2e2115;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero h1 strong {
+            color: #c47a34;
+        }
+        
+        .hero-title-connector {
+            color: #c47a34;
+            font-weight: 700;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #5b4634;
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .hero-subtitle strong {
+            color: #ad6b28;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            color: #6d5843;
+            margin-bottom: 2rem;
+            line-height: 1.9;
+        }
+        
+        .hero-description strong {
+            color: #b4702e;
+        }
+        
+        .hero-features {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            flex-wrap: nowrap;
+        }
+        
+        .hero-feature-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 0.7rem 0.6rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            width: 120px;
+            height: 85px;
+        }
+        
+        .hero-feature-card:nth-child(3) {
+            width: 160px;
+        }
+        
+        .hero-feature-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .hero-feature-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .hero-feature-icon .icon-fill {
+            fill: #E67E22;
+        }
+        
+        .hero-feature-icon .icon-stroke-dark {
+            stroke: #E67E22;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .hero-feature-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2e2115;
+            text-align: center;
+            line-height: 1.2;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            width: 100%;
+            min-height: 1.4rem;
+            margin: 0;
+        }
+        
+        
+        .hero-feature-plus {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #D4A574;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 85px;
+            padding: 0 0.2rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero-features {
+                gap: 0.25rem;
+            }
+            
+            .hero-feature-card {
+                width: clamp(88px, calc((100% - 2rem) / 3), 120px);
+            }
+            
+            .hero-feature-card:nth-child(3) {
+                width: clamp(88px, calc((100% - 2rem) / 3), 160px);
+            }
+            
+            .hero-feature-text {
+                font-size: clamp(0.68rem, 2.9vw, 0.85rem);
+            }
+            
+            .hero-feature-plus {
+                width: 0.45rem;
+                font-size: 1rem;
+                padding: 0;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .hero-features {
+                justify-content: flex-start;
+                gap: 1rem;
+            }
+        }
+        
+        .hero-image {
+            animation: none;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3), 0 0 0 0 rgba(212, 165, 116, 0.7);
+            }
+            50% {
+                box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3), 0 0 0 15px rgba(212, 165, 116, 0);
+            }
+            100% {
+                box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3), 0 0 0 0 rgba(212, 165, 116, 0);
+            }
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+            min-width: 312px;
+            text-align: center;
+        }
+        
+        .btn-primary .compass-icon {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: var(--white);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.5);
+        }
+        
+        .btn-primary.pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .price-info {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+        
+        /* Problem Section */
+        .problem {
+            background: var(--white);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .section-title-medium {
+            font-size: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .problem-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 20px;
+            border-left: 5px solid var(--gold);
+            transition: all 0.3s ease;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .problem-card h3 i {
+            color: var(--orange);
+        }
+
+        .problem-card h3 i.fa-user-circle,
+        .problem-card h3 i.fa-graduation-cap {
+            position: relative;
+            left: 0.1rem;
+            margin-right: 1.25rem;
+        }
+        
+        .problem-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .problem-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--gray);
+            border-bottom: 1px solid var(--gray-light);
+        }
+        
+        .problem-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .problem-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--orange);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        .problem-highlight {
+            background: rgba(212, 165, 116, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            border-left: 4px solid var(--gold);
+            text-align: center;
+        }
+        
+        .problem-highlight strong {
+            color: var(--dark);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+        
+        .solution-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .benefit-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-icon {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            background: #cfa46b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 18px 35px rgba(207, 164, 107, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-icon::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: -30%;
+            right: -35%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.28), transparent 60%);
+            transform: rotate(25deg);
+        }
+
+        .benefit-icon svg {
+            width: 44px;
+            height: 44px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-icon .icon-fill {
+            fill: #ffffff;
+        }
+
+        .benefit-icon .icon-stroke {
+            stroke: #ffffff;
+            stroke-width: 3.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .benefit-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        .based-on {
+            background: rgba(212, 165, 116, 0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-top: 3rem;
+        }
+        
+        .based-on h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+        
+        .based-list {
+            list-style: none;
+            padding: 2rem 2.5rem;
+            margin: 0;
+            background: var(--white);
+            border-radius: 15px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0;
+        }
+        
+        .based-list::before,
+        .based-list::after {
+            content: '';
+        }
+        
+        .based-list li {
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.6rem 0;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            grid-column: 2;
+        }
+        
+        .based-list li::before {
+            content: '→';
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 968px) {
+            .based-list {
+                max-width: 100%;
+                padding: 1.5rem 1.5rem;
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
+            }
+            
+            .based-list li {
+                grid-column: 2;
+            }
+        }
+        
+        /* Origin Section */
+        .origin {
+            background: linear-gradient(135deg, #fffaf5 0%, #fff8f0 50%, #fef5eb 100%);
+            color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .origin::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(80% 90% at 10% 20%, rgba(212, 165, 116, 0.15) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        
+        .origin::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            right: -80px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(230, 126, 34, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .origin .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .origin .section-title {
+            color: var(--dark);
+        }
+        
+        .origin-subtitle {
+            max-width: 740px;
+            margin: 1rem auto 0;
+            text-align: center;
+            font-size: 1.15rem;
+            color: #5b4634;
+            line-height: 1.8;
+        }
+        
+        .origin-intro {
+            max-width: 920px;
+            margin: 1.5rem auto 0;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #5b4634;
+            line-height: 1.9;
+            font-weight: 600;
+        }
+        
+        .origin-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin-top: 3.5rem;
+        }
+        
+        .origin-story {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #6d5843;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .origin-story p strong {
+            color: var(--orange);
+        }
+        
+        .origin-highlight {
+            width: 100%;
+            max-width: 1080px;
+            margin: 0 auto;
+            background: rgba(212, 165, 116, 0.08);
+            border: 2px solid rgba(212, 165, 116, 0.25);
+            border-radius: 18px;
+            padding: 2rem;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.15);
+        }
+        
+        .origin-highlight h4 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+            color: var(--orange);
+        }
+        
+        .origin-checklist {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .origin-checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            color: #5b4634;
+        }
+        
+        .origin-check-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.4);
+        }
+        
+        .origin-check-icon svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--white);
+            stroke-width: 2.6;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .origin-highlight p {
+            margin: 0;
+            color: #6d5843;
+        }
+        
+        .origin-highlight p strong {
+            color: var(--orange);
+        }
+        
+        .origin-cards {
+            display: grid;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1080px;
+            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+        
+        .origin-card {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 1.8rem;
+            border: 2px solid rgba(212, 165, 116, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .origin-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.2);
+        }
+        
+        .origin-card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.4);
+        }
+        
+        .origin-card-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .origin-card-icon svg .icon-fill {
+            fill: var(--white);
+        }
+
+        .origin-card-icon svg .icon-stroke {
+            fill: none;
+            stroke: var(--white);
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .origin-card:nth-child(2) .origin-card-icon {
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+        }
+        
+        .origin-card:nth-child(3) .origin-card-icon {
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+        }
+        
+        .origin-card h4 {
+            font-size: 1.15rem;
+            color: var(--dark);
+            margin: 0;
+        }
+        
+        .origin-card p {
+            margin: 0;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        /* Creators Section */
+        .creators {
+            background: linear-gradient(135deg, #fffaf5 0%, #fff8f0 100%);
+        }
+        
+        .creators-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .creators-image {
+            position: relative;
+        }
+        
+        .creators-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            border: 5px solid var(--gold);
+        }
+        
+        .creators-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+        
+        .creators-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .creators-text strong {
+            color: var(--dark);
+        }
+        
+        /* Package Section */
+        .package {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+        
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .package-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 3px solid var(--gray-light);
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .package-icon {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            background: #cfa46b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 18px 35px rgba(207, 164, 107, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-icon::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: -30%;
+            right: -35%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.28), transparent 60%);
+            transform: rotate(25deg);
+        }
+
+        .package-icon svg {
+            width: 44px;
+            height: 44px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .package-icon .icon-fill {
+            fill: #ffffff;
+        }
+
+        .package-icon .icon-stroke {
+            stroke: #ffffff;
+            stroke-width: 3.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .package-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .package-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        .package-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+        
+        .package-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .package-card li {
+            padding: 0.5rem 0;
+            color: var(--gray);
+        }
+        
+        .package-card li::before {
+            content: '✓ ';
+            color: var(--orange);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .testimonial-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid var(--orange);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--gold);
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            opacity: 0.3;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .testimonial-author::before {
+            content: '—';
+            color: var(--gold);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #fffaf5 0%, #fff8f0 100%);
+            color: var(--dark);
+            text-align: center;
+        }
+        
+        .cta-section .section-title {
+            color: var(--dark);
+        }
+        
+        .cta-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+            padding: 4rem;
+            background: var(--white);
+            border-radius: 28px;
+            border: 2px solid rgba(212, 165, 116, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-content::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle at center, rgba(212, 165, 116, 0.15), transparent 70%);
+            pointer-events: none;
+        }
+        
+        .cta-text {
+            text-align: left;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+        
+        .cta-product-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0;
+            line-height: 1.3;
+        }
+        
+        .cta-description {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--gray);
+            margin: 0;
+        }
+        
+        .cta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(230, 126, 34, 0.15));
+            color: var(--orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            width: fit-content;
+            border: 1px solid rgba(212, 165, 116, 0.3);
+        }
+        
+        .cta-badge i {
+            font-size: 0.85rem;
+        }
+        
+        .cta-includes {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        
+        .cta-include-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            background: var(--light);
+            border: 2px solid rgba(212, 165, 116, 0.25);
+            border-radius: 12px;
+            padding: 0.9rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-include-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--gold);
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.2);
+        }
+        
+        .cta-include-item i {
+            font-size: 1.3rem;
+            color: var(--orange);
+        }
+        
+        .cta-include-item strong {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        .cta-include-plus {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cta-price {
+            margin: 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .cta-price-label {
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .cta-price-separator {
+            font-size: 0.9rem;
+            color: var(--gray);
+            text-transform: lowercase;
+        }
+        
+        .cta-price-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+        
+        .cta-image {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .cta-image::before {
+            content: "";
+            position: absolute;
+            inset: -10%;
+            background: radial-gradient(circle at center, rgba(212, 165, 116, 0.2), transparent 70%);
+            filter: blur(40px);
+            z-index: -1;
+        }
+        
+        .cta-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border: 4px solid var(--gold);
+        }
+        
+        /* CTA v2 layout (card estilo referência) */
+        .cta-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 820px;
+            margin: 1rem auto 2rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+        
+        .cta-card {
+            max-width: 720px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border: 2px solid rgba(212, 165, 116, 0.2);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-card-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-price--stacked {
+            margin: 0.5rem 0 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            align-items: center;
+        }
+        
+        .cta-price-parcelado {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--orange);
+        }
+        
+        .cta-price-avista {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: 700;
+        }
+        
+        .cta-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.25rem auto 2rem;
+            max-width: 520px;
+            text-align: left;
+        }
+        
+        .cta-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--gray);
+            padding: 0.5rem 0;
+        }
+        
+        .cta-list li i {
+            color: var(--orange);
+        }
+        
+        .cta-btn {
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin: 0 auto;
+            max-width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+        }
+
+        /* CTA mobile refinements */
+        @media (max-width: 600px) {
+            .cta-price-parcelado {
+                font-size: 1.55rem;
+                white-space: nowrap;
+            }
+            .btn-primary.cta-btn {
+                padding: 1rem 1rem;
+                font-size: 0.95rem;
+                line-height: 1.3;
+                width: 100%;
+                max-width: 100%;
+                margin: 0 auto;
+                display: flex;
+                box-sizing: border-box;
+            }
+            /* reduzir o título da CTA para 2–3 linhas no mobile */
+            .cta-section .section-title {
+                font-size: 1.35rem;
+                line-height: 1.3;
+                max-width: 26ch;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        /* FAQ Section */
+        .faq {
+            position: relative;
+            background: var(--white);
+        }
+        
+        .faq .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .faq-container {
+            max-width: 860px;
+            margin: 2.5rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .faq-item {
+            background: var(--white);
+            border-radius: 18px;
+            border: 1px solid rgba(212, 165, 116, 0.28);
+            box-shadow: 0 18px 45px rgba(212, 165, 116, 0.12);
+            overflow: hidden;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: rgba(196, 122, 52, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 24px 54px rgba(196, 122, 52, 0.16);
+        }
+        
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.35rem 1.6rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            color: #2e2115;
+            font-size: 1.05rem;
+            line-height: 1.4;
+            text-align: left;
+            transition: background-color 0.3s ease, color 0.3s ease, padding-bottom 0.3s ease;
+            -webkit-appearance: none;
+            appearance: none;
+            font-family: inherit;
+        }
+        
+        .faq-question span {
+            flex: 1;
+        }
+        
+        .faq-question:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.35);
+            border-radius: 18px;
+        }
+        
+        .faq-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(212, 165, 116, 0.16);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #c47a34;
+            font-size: 0.95rem;
+            transition: transform 0.35s ease, background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+            flex-shrink: 0;
+        }
+        
+        .faq-item.active .faq-question {
+            color: #c47a34;
+            background: rgba(212, 165, 116, 0.12);
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            color: var(--white);
+            box-shadow: 0 12px 25px rgba(196, 122, 52, 0.35);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease;
+            padding: 0 1.6rem;
+            color: #6d5843;
+            line-height: 1.75;
+            opacity: 0;
+            border-top: 1px solid transparent;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 460px;
+            padding: 0 1.6rem 1.45rem;
+            opacity: 1;
+            border-top-color: rgba(212, 165, 116, 0.18);
+        }
+        
+        .faq-answer p {
+            margin-top: 1.1rem;
+        }
+        
+        @media (max-width: 600px) {
+            .faq-container {
+                padding: 0 0.5rem;
+            }
+            .faq-item {
+                border-radius: 14px;
+            }
+            .faq-question {
+                padding: 1.1rem 1.2rem;
+                font-size: 1rem;
+            }
+            .faq-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 0.85rem;
+            }
+            .faq-answer {
+                padding: 0 1.2rem;
+            }
+            .faq-item.active .faq-answer {
+                padding: 0 1.2rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .based-on {
+                margin-left: -2rem;
+                margin-right: -2rem;
+                padding: 2.75rem 1.75rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .based-on h3 {
+                font-size: 1.15rem;
+                line-height: 1.1;
+                white-space: nowrap;
+            }
+
+            .based-list {
+                padding: 1.9rem 1.75rem;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
+            }
+            
+            .based-list li {
+                grid-column: 2;
+            }
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+        
+        .footer-links h4,
+        .footer-contact h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-link:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        .footer-legal {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-legal a:hover {
+            color: var(--gold);
+        }
+        
+        /* Mobile Spacing Adjustments */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 7.5rem 0 5rem;
+            }
+
+            .hero .container {
+                padding: 0 1rem;
+            }
+
+            .hero-content {
+                gap: 2.25rem;
+            }
+
+            .hero h1 {
+                font-size: 1.4rem;
+                line-height: 1.25;
+            }
+
+            .hero-subtitle {
+                font-size: 1.05rem;
+                margin-bottom: 0.9rem;
+                line-height: 1.5;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+                margin-bottom: 1.8rem;
+                line-height: 1.75;
+            }
+
+            .hero-features {
+                gap: 0.4rem;
+            }
+
+            .hero-feature-card {
+                padding: 0.5rem 0.4rem;
+                width: 85px;
+                height: 75px;
+            }
+
+            .hero-feature-icon {
+                width: 34px;
+                height: 34px;
+            }
+
+            .hero-feature-text {
+                font-size: 0.75rem;
+                min-height: 28px;
+            }
+
+            .hero-features .hero-feature-card:first-of-type .hero-feature-text,
+            .hero-features .hero-feature-card:last-of-type .hero-feature-text {
+                transform: translateY(-8px);
+            }
+
+            .hero-feature-plus {
+                font-size: 1rem;
+            }
+
+            .origin-highlight h4 {
+                text-transform: none;
+                letter-spacing: normal;
+                font-size: 1.05rem;
+            }
+
+            .cta-includes {
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: stretch;
+            }
+
+            .cta-include-item {
+                width: 100%;
+                justify-content: flex-start;
+                padding: 0.8rem 1.2rem;
+            }
+
+            .cta-include-item strong {
+                font-size: 0.9rem;
+            }
+
+            .cta-include-plus {
+                display: none;
+            }
+            
+            .package-card li::before {
+                margin-right: 0.4rem;
+            }
+        }
+        
+        /* Mobile adjustments for E-book chart */
+        @media (max-width: 600px) {
+            .package-card > div[style*="background: rgba(212, 165, 116, 0.1)"] > div[style*="flex-wrap: wrap"] {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 0.6rem !important;
+                margin-top: 1.2rem !important;
+            }
+            
+            .package-card > div[style*="background: rgba(212, 165, 116, 0.1)"] > div[style*="flex-wrap: wrap"] > div {
+                width: 100% !important;
+                white-space: nowrap !important;
+            }
+            
+            .package-card > div[style*="background: rgba(212, 165, 116, 0.1)"] > div[style*="flex-wrap: wrap"] span {
+                font-size: 0.8rem !important;
+                white-space: nowrap !important;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .hero-text {
+                text-align: center;
+            }
+            
+            .hero-image {
+                order: -1;
+                display: flex;
+                justify-content: center;
+            }
+
+            .hero-image img {
+                max-width: 70%;
+                margin: 0 auto;
+            }
+            
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .benefit-icon {
+                width: 68px;
+                height: 68px;
+            }
+
+            .benefit-icon svg {
+                width: 36px;
+                height: 36px;
+            }
+
+            .origin-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .origin-intro {
+                font-size: 1rem;
+                margin-top: 1.2rem;
+                padding: 0 0.5rem;
+            }
+
+            .origin-layout {
+                gap: 2.5rem;
+            }
+
+            .origin-highlight,
+            .origin-cards {
+                max-width: 100%;
+            }
+
+            .origin-cards {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .origin-card {
+                padding: 1.6rem;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                max-width: 100%;
+            }
+
+            .origin-card-icon {
+                width: 56px;
+                height: 56px;
+                margin: 0 auto;
+            }
+
+            .origin-card h4 {
+                text-align: center;
+            }
+
+            .origin-card p {
+                text-align: center;
+            }
+
+            .section-title-medium {
+                font-size: 1.6rem;
+                margin-top: 2.5rem;
+            }
+
+            .problem-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .benefit-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .based-on h3 {
+                font-size: 1.8rem;
+            }
+
+            .package-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .cta-product-name {
+                font-size: 1.6rem;
+            }
+            
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-grid,
+            .package-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .creators-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 2.5rem 1.5rem;
+                gap: 2.5rem;
+            }
+            
+            .cta-text {
+                text-align: center;
+                align-items: center;
+            }
+            
+            .cta-description {
+                text-align: center;
+            }
+            
+            .cta-price {
+                align-items: center;
+            }
+            
+            .cta-price-label {
+                justify-content: center;
+            }
+            
+            .cta-price-value {
+                text-align: center;
+                width: 100%;
+            }
+            
+            .cta-badge {
+                margin: 0 auto;
+            }
+            
+            .cta-image {
+                order: -1;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-brand {
+                align-items: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="#hero">
+                <img src="images/logo-header-new.jpg" alt="Suellen Seragi" class="header-logo">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#origin">Por que funciona</a></li>
+                    <li><a href="#testimonials">Relatos</a></li>
+                    <li><a href="#package">Conteúdo</a></li>
+                    <li><a href="https://pay.kiwify.com.br/GMsuKhV" target="_blank" class="btn-header">Comprar Agora</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="#origin" class="mobile-menu-link">Por que funciona</a></li>
+            <li><a href="#testimonials" class="mobile-menu-link">Relatos</a></li>
+            <li><a href="#package" class="mobile-menu-link">Conteúdo</a></li>
+            <li><a href="https://pay.kiwify.com.br/GMsuKhV" target="_blank" class="btn-header" style="display: block; text-align: center; margin-top: 2rem;">Comprar Agora</a></li>
+        </ul>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1><strong>Guia Prático</strong> <span class="hero-title-connector">para</span> <strong>Reprogramar a Mente</strong></h1>
+                    <p class="hero-subtitle"><strong>A forma mais simples, leve e organizada</strong> de começar ou aprofundar sua reprogramação mental.</p>
+                    
+                    <div class="hero-features">
+                        <div class="hero-feature-card">
+                            <svg class="hero-feature-icon" viewBox="0 0 64 64" role="presentation">
+                                <rect class="icon-stroke-dark" x="20" y="14" width="24" height="36" rx="2" stroke-width="2.5"></rect>
+                                <line class="icon-stroke-dark" x1="24" y1="22" x2="40" y2="22" stroke-width="2.5"></line>
+                                <line class="icon-stroke-dark" x1="24" y1="28" x2="40" y2="28" stroke-width="2.5"></line>
+                                <line class="icon-stroke-dark" x1="24" y1="34" x2="36" y2="34" stroke-width="2.5"></line>
+                                <line class="icon-stroke-dark" x1="24" y1="40" x2="38" y2="40" stroke-width="2.5"></line>
+                            </svg>
+                            <span class="hero-feature-text">E-book</span>
+                        </div>
+                        <span class="hero-feature-plus">+</span>
+                        <div class="hero-feature-card">
+                            <svg class="hero-feature-icon" viewBox="0 0 64 64" role="presentation">
+                                <path class="icon-stroke-dark" d="M38 16l8 8-22 22-10 3 3-10 21-21z" stroke-width="2.5"></path>
+                                <line class="icon-stroke-dark" x1="34" y1="20" x2="42" y2="28" stroke-width="2.5"></line>
+                                <line class="icon-stroke-dark" x1="16" y1="48" x2="48" y2="48" stroke-width="2.5"></line>
+                            </svg>
+                            <span class="hero-feature-text">Exercícios Práticos</span>
+                        </div>
+                        <span class="hero-feature-plus">+</span>
+                        <div class="hero-feature-card">
+                            <svg class="hero-feature-icon" viewBox="0 0 64 64" role="presentation">
+                                <rect class="icon-stroke-dark" x="16" y="20" width="32" height="24" rx="2" stroke-width="2.5"></rect>
+                                <polygon class="icon-fill" points="28,28 28,36 36,32" fill="#E67E22"></polygon>
+                                <circle class="icon-stroke-dark" cx="32" cy="32" r="8" stroke-width="2.5"></circle>
+                            </svg>
+                            <span class="hero-feature-text">Aulão</span>
+                        </div>
+                    </div>
+                    
+                    <p class="hero-description"><strong>Um guia direto</strong>, inspirado em <strong>princípios do Grande Livro</strong>, em <strong>PNL</strong>, neurociência e reprogramação mental, pronto para <strong>transformar sua mente de forma prática e real</strong>.</p>
+                    
+                    <a href="https://pay.kiwify.com.br/GMsuKhV" target="_blank" class="btn-primary pulse">
+                        <svg class="compass-icon" viewBox="0 0 24 24" role="presentation" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="white"/>
+                        </svg>
+                        Começar Agora
+                    </a>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="https://www.genspark.ai/api/files/s/QeLkT68p" alt="Guia Prático para Reprogramar a Mente">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Problem Section -->
+    <section class="problem" id="problem">
+        <div class="container">
+            <h2 class="section-title">Você sabe o que precisa mudar… mas não sabe por onde começar.</h2>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3><i class="fas fa-user-circle"></i> Se você nunca fez reprogramação mental:</h3>
+                    <ul class="problem-list">
+                        <li>Sente-se perdido, negativo ou sem direção</li>
+                        <li>Dificuldade de focar no presente</li>
+                        <li>Quer mudar… mas não sabe "como" fazer</li>
+                        <li>Já consumiu conteúdo demais, mas não consegue aplicar nada</li>
+                        <li>Sabe o que quer, mas não sabe quais passos dar</li>
+                        <li>Não consegue manter constância</li>
+                        <li>Não tem uma rotina mental clara</li>
+                    </ul>
+                </div>
+                
+                <div class="problem-card">
+                    <h3><i class="fas fa-graduation-cap"></i> Se você já fez O Ouro da Reprogramação Mental:</h3>
+                    <ul class="problem-list">
+                        <li>Você entendeu tudo, mas precisa colocar no dia a dia</li>
+                        <li>Já tem clareza e entendimento</li>
+                        <li>Mas paralisa na hora de aplicar diariamente</li>
+                        <li>Quer práticas reais, objetivas</li>
+                        <li>Quer organizar a mente para realmente destravar sua vida</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="problem-highlight">
+                <strong>Ambos os casos têm a mesma raiz:</strong> falta de direção prática, leve, diária.<br>
+                E é exatamente isso que este Guia entrega.
+            </div>
+        </div>
+    </section>
+    
+    <!-- Solution Section -->
+    <section class="solution" id="solution">
+        <div class="container">
+            <h2 class="section-title">Se você se identificou, esse Guia foi feito para você!</h2>
+            <p class="solution-intro">O Guia Prático para Reprogramar a Mente mostra exatamente como praticar reprogramação mental de forma leve, organizada e possível para quem nunca praticou ou para quem já entende do assunto.</p>
+            
+            <h3 class="section-title section-title-medium">Com este Guia, você vai ter:</h3>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="presentation">
+                            <!-- Círculo vazado -->
+                            <circle class="icon-stroke" cx="32" cy="32" r="20" stroke-width="3" fill="none"></circle>
+                            <!-- + no centro -->
+                            <rect class="icon-fill" x="30" y="20" width="4" height="24" rx="2"></rect>
+                            <rect class="icon-fill" x="20" y="30" width="24" height="4" rx="2"></rect>
+                        </svg>
+                    </div>
+                    <h3>Positividade com resultado</h3>
+                    <p>Se tornar positiva, e com resultados reais, não otimismo superficial</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="presentation">
+                            <circle class="icon-stroke" cx="32" cy="32" r="18"></circle>
+                            <circle class="icon-fill" cx="24" cy="28" r="3"></circle>
+                            <circle class="icon-fill" cx="40" cy="28" r="3"></circle>
+                            <path class="icon-stroke" d="M22 38Q32 46 42 38"></path>
+                        </svg>
+                    </div>
+                    <h3>Rotina mental simples</h3>
+                    <p>Criar uma rotina mental simples, gostosa e sustentável</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="presentation">
+                            <!-- Gráfico de barras crescente -->
+                            <rect class="icon-stroke" x="14" y="42" width="8" height="10" rx="1"></rect>
+                            <rect class="icon-stroke" x="26" y="34" width="8" height="18" rx="1"></rect>
+                            <rect class="icon-stroke" x="38" y="26" width="8" height="26" rx="1"></rect>
+                            <!-- Estrela de destaque no topo -->
+                            <path class="icon-stroke" d="M50 18 L52 24 L58 24 L53 28 L55 34 L50 30 L45 34 L47 28 L42 24 L48 24 Z"></path>
+                        </svg>
+                    </div>
+                    <h3>Resultados concretos</h3>
+                    <p>Praticar exercícios diariamente, que geram resultados concretos</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="presentation">
+                            <circle class="icon-stroke" cx="28" cy="28" r="14"></circle>
+                            <path class="icon-stroke" d="M38 38l12 12"></path>
+                            <circle class="icon-fill" cx="28" cy="28" r="6"></circle>
+                        </svg>
+                    </div>
+                    <h3>Clareza de metas</h3>
+                    <p>Clarear seus desejos, metas e próximos passos</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="presentation">
+                            <!-- Interruptor OFF grande -->
+                            <rect class="icon-stroke" x="14" y="20" width="36" height="18" rx="9" stroke-width="3.5"></rect>
+                            <circle class="icon-stroke" cx="24" cy="29" r="7" fill="white"></circle>
+                            <!-- Texto OFF embaixo -->
+                            <text x="32" y="54" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="white" stroke="none">OFF</text>
+                        </svg>
+                    </div>
+                    <h3>Sair do automático</h3>
+                    <p>Sair do piloto automático da mente</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="presentation">
+                            <!-- Estrada em perspectiva -->
+                            <!-- Laterais da estrada (mais largas) -->
+                            <line class="icon-stroke" x1="14" y1="54" x2="28" y2="10" stroke-width="3.5"></line>
+                            <line class="icon-stroke" x1="50" y1="54" x2="36" y2="10" stroke-width="3.5"></line>
+                            <!-- Linha central tracejada (mais espaçadas) -->
+                            <line class="icon-stroke" x1="32" y1="52" x2="32" y2="44" stroke-width="3"></line>
+                            <line class="icon-stroke" x1="32" y1="38" x2="32" y2="30" stroke-width="3"></line>
+                            <line class="icon-stroke" x1="32" y1="24" x2="32" y2="16" stroke-width="3"></line>
+                        </svg>
+                    </div>
+                    <h3>Direção e constância</h3>
+                    <p>Ter direção e constância, mesmo quando o emocional oscila</p>
+                </div>
+            </div>
+            
+            <div class="based-on">
+                <h3>Tudo baseado em:</h3>
+                <ul class="based-list">
+                    <li>Princípios eternos do Grande Livro</li>
+                    <li>Neurociência contemporânea</li>
+                    <li>Técnicas de PNL</li>
+                    <li>Ferramentas reais de reprogramação mental</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Origin Section -->
+    <section class="origin" id="origin">
+        <div class="container">
+            <h2 class="section-title">Por que esse Guia funciona?</h2>
+            
+            <p class="origin-subtitle">Porque ele foi criado para usar exercícios na prática — na vida real, no seu ritmo, no seu emocional (independente das oscilações) e no seu cotidiano.</p>
+            <p class="origin-intro">Sem processos confusos, nada que exija preparo prévio. Ele tira o excesso, elimina o que complica e entrega só o que realmente te faz avançar.</p>
+            
+            <div class="origin-layout">
+                <div class="origin-highlight">
+                    <div style="text-align: center;">
+                        <h4 style="text-align: center; text-transform: none; letter-spacing: normal; font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid rgba(212, 165, 116, 0.3); padding-bottom: 1rem; margin-bottom: 1.5rem; padding-top: 0.5rem; display: inline-block; width: auto;">E ele funciona para perfis diferentes porque se adapta ao ponto onde cada pessoa está:</h4>
+                    </div>
+                    <div style="max-width: 720px; margin: 0 auto;">
+                        <ul class="origin-checklist">
+                            <li>
+                                <span class="origin-check-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 20 20">
+                                        <polyline points="4 10.5 8 14 16 6"></polyline>
+                                    </svg>
+                                </span>
+                                <span>Quem vem de anos de religião e sempre sentiu receio de praticar algo novo…</span>
+                            </li>
+                            <li>
+                                <span class="origin-check-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 20 20">
+                                        <polyline points="4 10.5 8 14 16 6"></polyline>
+                                    </svg>
+                                </span>
+                                <span>Quem já tentou várias abordagens, conteúdos e técnicas, mas não conseguiu transformar isso em rotina…</span>
+                            </li>
+                            <li>
+                                <span class="origin-check-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 20 20">
+                                        <polyline points="4 10.5 8 14 16 6"></polyline>
+                                    </svg>
+                                </span>
+                                <span>Quem descobriu no Teste de Prosperidade energias como medo, validação, autossuficiência ou desordem…</span>
+                            </li>
+                            <li>
+                                <span class="origin-check-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 20 20">
+                                        <polyline points="4 10.5 8 14 16 6"></polyline>
+                                    </svg>
+                                </span>
+                                <span>Quem nunca praticou reprogramação mental e quer começar com segurança e simplicidade…</span>
+                            </li>
+                            <li>
+                                <span class="origin-check-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 20 20">
+                                        <polyline points="4 10.5 8 14 16 6"></polyline>
+                                    </svg>
+                                </span>
+                                <span>E quem já despertou no Ouro da Reprogramação Mental e quer uma ferramenta para potencializar os resultados.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <p style="text-align: center; margin-top: 1.5rem;"><strong>Tudo aqui é claro, leve e possível.</strong></p>
+                </div>
+
+                <div class="origin-cards">
+                    <div class="origin-card">
+                        <span class="origin-card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true">
+                                <circle class="icon-stroke" cx="12" cy="12" r="9"></circle>
+                                <path class="icon-stroke" d="M12 7v5l3 3"></path>
+                                <circle class="icon-fill" cx="12" cy="12" r="2"></circle>
+                            </svg>
+                        </span>
+                        <h4>No seu ritmo</h4>
+                        <p>É um caminho que respeita seu momento, sua história e sua rotina — sem exigir nada além do passo que você consegue dar hoje.</p>
+                    </div>
+                    <div class="origin-card">
+                        <span class="origin-card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true">
+                                <path class="icon-stroke" d="M20 7l-8 8-4-4-6 6"></path>
+                                <circle class="icon-fill" cx="20" cy="7" r="2"></circle>
+                                <circle class="icon-fill" cx="12" cy="15" r="2"></circle>
+                            </svg>
+                        </span>
+                        <h4>Prática real</h4>
+                        <p>O Guia funciona porque ele entrega ação, direção, constância e prática real, rumo à sua nova realidade.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Transformações Reais</h2>
+            <p class="section-subtitle">Resultados que acontecem na vida de quem colocou o Guia em prática e viu a diferença.</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">"Senti diferença no primeiro dia. Era exatamente esse 'como' que eu não conseguia achar."</p>
+                    <p class="testimonial-author">Juliana A.</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">"Já tinha feito o Ouro, mas esse guia me deu a prática diária que faltava. Minha mente está mais leve."</p>
+                    <p class="testimonial-author">Gabriella S.</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">"É simples, direto e realmente funciona. Finalmente entendi como aplicar reprogramação mental na vida real."</p>
+                    <p class="testimonial-author">Ana N.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Creators Section -->
+    <section class="creators" id="creators">
+        <div class="container">
+            <h2 class="section-title">Sobre os criadores</h2>
+            
+            <div class="creators-content">
+                <div class="creators-image">
+                    <img src="https://www.genspark.ai/api/files/s/2XYaJYr3" alt="Renato e Suellen Seragi">
+                </div>
+                
+                <div class="creators-text">
+                    <p>Renato e Suellen Seragi são casados há 21 anos e pais de quatro filhos.</p>
+                    
+                    <p>Desde muito jovens, caminham juntos com um propósito claro: ajudar pessoas a se reconectarem com Deus, com sua essência e com a vida que foram criadas para viver.</p>
+                    
+                    <p>Durante anos trabalharam com jovens e casais na igreja, onde perceberam um padrão que se repetia:</p>
+                    
+                    <p><strong>A maior parte dos conflitos externos vem de padrões internos — crenças, medos, traumas e repetições inconscientes.</strong></p>
+                    
+                    <p>Aprofundaram-se em estudos sobre mente, comportamento e espiritualidade, e mais tarde levaram esse trabalho para o digital, onde hoje impactam centenas de milhares de vidas com conteúdos, cursos e ferramentas de transformação real.</p>
+                    
+                    <p>E tudo isso é feito com um coração honesto, com a intenção genuína de servir, ajudar e transformar — porque é assim que eles vivem, e é assim que acreditam que a verdadeira prosperidade começa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Package Section -->
+    <section class="package" id="package">
+        <div class="container">
+            <h2 class="section-title">Conteúdo do Guia Prático da RM:</h2>
+            
+            <div class="package-grid">
+                <div class="package-card">
+                    <div class="package-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="presentation">
+                            <rect class="icon-stroke" x="18" y="14" width="28" height="36" rx="2"></rect>
+                            <path class="icon-stroke" d="M18 20h28M24 28h16M24 34h16M24 40h10"></path>
+                        </svg>
+                    </div>
+                    <h3>E-BOOK COMPLETO</h3>
+                    <p><strong style="color: #E67E22;">38 páginas</strong></p>
+                    <p style="margin-bottom: 1.5rem;">Conteúdo organizado, didático e direto ao ponto para guiar sua reprogramação mental.</p>
+                    <div style="background: rgba(212, 165, 116, 0.1); border: 2px solid rgba(212, 165, 116, 0.25); border-radius: 12px; padding: 1.2rem; margin-top: 1rem;">
+                        <div style="width: 100%; height: 24px; border-radius: 12px; overflow: hidden; display: flex;">
+                            <div style="width: 70%; height: 100%; background: linear-gradient(135deg, #D4A574, #E67E22);"></div>
+                            <div style="width: 30%; height: 100%; background: linear-gradient(135deg, #cfa46b, #b8936a);"></div>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 0.3rem; margin-top: 0.6rem; flex-wrap: wrap;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 16px; height: 16px; background: linear-gradient(135deg, #D4A574, #E67E22); border-radius: 3px;"></div>
+                                <span style="color: var(--dark); font-size: 0.9rem; font-weight: 600;">70% Conteúdo Técnico</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 16px; height: 16px; background: linear-gradient(135deg, #cfa46b, #b8936a); border-radius: 3px;"></div>
+                                <span style="color: var(--dark); font-size: 0.9rem; font-weight: 600;">30% Conteúdo Inspirador</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="presentation">
+                            <path class="icon-stroke" d="M40 18l6 6-20 20-8 2 2-8z"></path>
+                            <path class="icon-stroke" d="M36 22l6 6"></path>
+                            <rect class="icon-stroke" x="16" y="48" width="32" height="2"></rect>
+                        </svg>
+                    </div>
+                    <h3>EXERCÍCIOS PRÁTICOS</h3>
+                    <p><strong style="color: #E67E22;">Inclui:</strong></p>
+                    <ul>
+                        <li>Seja Positivo</li>
+                        <li>Caderno dos Sonhos</li>
+                        <li>Afirmações Positivas</li>
+                        <li>Meditação</li>
+                        <li>Comemorações</li>
+                    </ul>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="presentation">
+                            <rect class="icon-stroke" x="14" y="20" width="32" height="24" rx="2"></rect>
+                            <path class="icon-fill" d="M46 28l8-4v16l-8-4z"></path>
+                            <circle class="icon-fill" cx="30" cy="32" r="6"></circle>
+                        </svg>
+                    </div>
+                    <h3>VÍDEO AULA BÔNUS</h3>
+                    <p>Uma aula exclusiva para mostrar como aplicar tudo de forma fluida e natural.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2 class="section-title">Comece hoje a reprogramar sua mente de forma simples, leve e prática.</h2>
+            
+            <p class="cta-subtitle">Domine uma rotina de reprogramação mental com conteúdo guiado, exercícios práticos e aulão exclusivo.</p>
+            <div class="cta-card">
+                <h3 class="cta-card-title">Pacote Completo</h3>
+                <div class="cta-price cta-price--stacked">
+                    <div class="cta-price-parcelado">12x de R$ 7,67</div>
+                    <div class="cta-price-avista">ou R$ 74,11 à vista</div>
+                </div>
+                <ul class="cta-list">
+                    <li><i class="fa-solid fa-check"></i> E-book Guia Prático da Reprogramação Mental</li>
+                    <li><i class="fa-solid fa-check"></i> Exercícios Práticos</li>
+                    <li><i class="fa-solid fa-check"></i> Aulão com Suellen Seragi</li>
+                </ul>
+                <a href="https://pay.kiwify.com.br/GMsuKhV" target="_blank" class="btn-primary cta-btn pulse"><i class="fa-solid fa-cart-shopping"></i> Quero Começar Agora</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Esse guia serve para iniciantes?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <p>Sim. Ele é perfeito para quem nunca reprogramou a mente e quer saber por onde começar.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Serve para quem fez O Ouro da Reprogramação Mental?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <p>Sim. Ele funciona como um apêndice prático para aplicar o que foi aprendido no curso.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Em quanto tempo vou ver resultados?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <p>A maioria sente leveza, foco e clareza já no primeiro dia de prática.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Preciso de muito tempo para aplicar?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <p>Não. Os exercícios foram criados para encaixar em qualquer rotina.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Tem parte religiosa?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <p>Não. O conteúdo é neutro, prático e inspirado em princípios universais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="https://www.suellenseragi.com.br" target="_blank" rel="noopener">
+                        <img src="images/logo-footer-new.jpg" alt="Suellen Seragi" class="footer-logo">
+                    </a>
+                    <p>Transformando vidas através do Grande Livro</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Guia Prático da RM</h4>
+                    <ul>
+                        <li><a href="#origin">Por que funciona</a></li>
+                        <li><a href="#testimonials">Relatos</a></li>
+                        <li><a href="#package">Conteúdo</a></li>
+                        <li><a href="https://pay.kiwify.com.br/GMsuKhV" target="_blank" rel="noopener">Comprar Agora</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/suellenseragi" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@suellenseragi" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@suellenseragi" target="_blank" rel="noopener" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Suellen Seragi. Todos os direitos reservados.</p>
+                <div class="footer-legal">
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+        
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        if (faqItems.length) {
+            faqItems.forEach((item, index) => {
+                const button = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                if (!button || !answer) {
+                    return;
+                }
+
+                const answerId = `faq-answer-${index}`;
+                answer.id = answerId;
+                button.setAttribute('aria-controls', answerId);
+                button.setAttribute('aria-expanded', 'false');
+                answer.setAttribute('aria-hidden', 'true');
+
+                button.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+
+                    faqItems.forEach(faqItem => {
+                        faqItem.classList.remove('active');
+                        const faqButton = faqItem.querySelector('.faq-question');
+                        const faqAnswer = faqItem.querySelector('.faq-answer');
+                        if (faqButton && faqAnswer) {
+                            faqButton.setAttribute('aria-expanded', 'false');
+                            faqAnswer.setAttribute('aria-hidden', 'true');
+                        }
+                    });
+
+                    if (!isActive) {
+                        item.classList.add('active');
+                        button.setAttribute('aria-expanded', 'true');
+                        answer.setAttribute('aria-hidden', 'false');
+                    }
+                });
+            });
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') {
+                    return;
+                }
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Mobile Menu
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+        
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        mobileMenuToggle.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+        
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+        
+    </script>
+</body>
+</html>
