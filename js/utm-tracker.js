@@ -72,8 +72,8 @@
 
     function processLinks() {
 
-        // Checkout: todos os links para pay.kiwify.com.br/GMsuKhV
-        const checkoutLinks = document.querySelectorAll('a[href*="pay.kiwify.com.br/GMsuKhV"]');
+        // Checkout: todos os links para pay.kiwify.com.br/itNhMPe
+        const checkoutLinks = document.querySelectorAll('a[href*="pay.kiwify.com.br/itNhMPe"]');
 
         checkoutLinks.forEach(link => {
             const baseUrl = link.getAttribute('href');
